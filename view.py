@@ -95,26 +95,68 @@ if __name__ == "__main__":
                     9787, 9791, 9803, 9811, 9817, 9829, 9833, 9839, 9851, 9857, 9859, 9871, 9883,
                     9887, 9901, 9907, 9923, 9929, 9931, 9941, 9949, 9967, 9973]
 
+#a)
+
 #Importamos a biblioteca "random" para gerarmos um número aleatório de 10^7 e 10^8.
 #Criamos uma variável "contagem" com valor 0. Esta variável indica quantos inteiros é necessário testar cada vez que executamos
 # o algoritmo. Criamos também a variável "contagem_media" com valor 0, que nos servirá para fazermos a média dos valores obtidos
 # na variável "contagem".
 
-    contagem = 0
-    contagem_media = 0
+contagem = 0
+contagem_media = 0
 
-    for i in range(20):
-        encontrar_primo = False
-        while not encontrar_primo:
-            num_aleatorio = random.randint(10**7, 10**8)
-            for elemento in nums_primos:
-                contagem += 1
-                if elemento > num_aleatorio**0.5:
-                    encontrar_primo = True
-                    break
-                if num_aleatorio % elemento == 0:
-                    break
-        contagem_media += contagem
-        print(str(i+1) + "º número primo - " + str(num_aleatorio))
-        print(f"A contagem é {contagem}")
-        contagem = 0
+#Criamos um ciclo for, entrando num loop que será executado 20 vezes.
+#Dentro do loop criamos uma variável "encontrar_primo" que demos o valor False, e passará a True quando for encontrado um número
+# primo. Dentro do ciclo for, criamos um ciclo while que tem como condição "o não acontecer" da variável "encontrar_primo".
+#Através da função "random.randint()", escolhemos um número aleatório de 10^7 a 10^8
+for i in range(20):
+    encontrar_primo = False
+    while not encontrar_primo:
+        num_aleatorio = random.randint(10**7, 10**8)
+
+#Criamos novamente um ciclo for que percorre toda a lista de numeros primos acima indicada. Fazemos a verificação se o número aleatório é ou não
+# divisível pelos numeros primos da lista. Inicialmente a variavel "encontrar_primo" é definida como False, e permenecerá assim até o numero aleatorio
+# nao ser divisível por algum valor da lista, caso contrário a variavel passa a ter o valor True, fazendo gerar outro numero aleatorio.
+        for elemento in nums_primos:
+            contagem += 1
+            if elemento > num_aleatorio**0.5:
+                encontrar_primo = True
+                break
+            if num_aleatorio % elemento == 0:
+                break
+    contagem_media += contagem
+    print(f"{i+1} º número primo - {num_aleatorio}")
+    print(f"A contagem é {contagem}")
+    contagem = 0
+#Por fim, após as 20 contagens, será calulada a media, usando o valor armazenado na variavel "contagem_media" e divindo esse valor por 20.
+media = contagem_media/20
+print(f"A média é {media}")
+
+#b)
+#Geramos um valor entre 1 e 10.000.
+num_decomposto = random.randint(1, 10**4)
+
+#Armazenaremos os fatores primos na lista "fatores_primos" e criamos uma variavel i com valor 2, uma vez que 2 é o menor numero primo.
+fatores_primos = []
+i = 2
+
+#Criamos um ciclo while com a seguinte condição "i * i <= num_decomposto". Se "num_decomposto" for divisivel por "i", o valor é adicionado à lista de fatores primos,
+# e fazemos uma divisão inteira do "num_decomposto" e de i. Caso nao seja divisivel, o valor de "i" é incrementado, e permanece no loop até nao haver mais nenhum fator.
+while i * i <= num_decomposto:
+    if num_decomposto % i:
+        i += 1
+    else:
+        num_decomposto //= i
+        fatores_primos.append(i)
+
+#O valor original é então depois recuperado multiplicando todos os valores da lista de fatores primos.
+if num_decomposto > 1:
+    fatores_primos.append(num_decomposto)
+
+valor = 1
+for elemento in fatores_primos:
+    valor *= elemento
+
+print(f"Número escolhido - {num_decomposto}")
+print(f"Fatores - {fatores_primos}")
+print(f"Valor recuperado {valor}")
