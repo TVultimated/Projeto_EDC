@@ -159,4 +159,4 @@ for elemento in fatores_primos:
 
 print(f"Número escolhido - {num_decomposto}")
 print(f"Fatores - {fatores_primos}")
-print(f"Valor recuperado {valor}")
+print(f"Valor recuperado - {valor}")
