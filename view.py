@@ -95,7 +95,13 @@ if __name__ == "__main__":
                     9787, 9791, 9803, 9811, 9817, 9829, 9833, 9839, 9851, 9857, 9859, 9871, 9883,
                     9887, 9901, 9907, 9923, 9929, 9931, 9941, 9949, 9967, 9973]
 
+#Importamos a biblioteca "random" para gerarmos um número aleatório de 10^7 e 10^8.
+#Criamos uma variável "contagem" com valor 0. Esta variável indica quantos inteiros é necessário testar cada vez que executamos
+# o algoritmo. Criamos também a variável "contagem_media" com valor 0, que nos servirá para fazermos a média dos valores obtidos
+# na variável "contagem".
+
     contagem = 0
+    contagem_media = 0
 
     for i in range(20):
         encontrar_primo = False
@@ -108,6 +114,7 @@ if __name__ == "__main__":
                     break
                 if num_aleatorio % elemento == 0:
                     break
+        contagem_media += contagem
         print(str(i+1) + "º número primo - " + str(num_aleatorio))
         print(f"A contagem é {contagem}")
         contagem = 0
