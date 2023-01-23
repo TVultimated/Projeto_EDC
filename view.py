@@ -1,4 +1,3 @@
-from controller import *
 import random
 
 def main():
@@ -96,10 +95,13 @@ def main():
                     9787, 9791, 9803, 9811, 9817, 9829, 9833, 9839, 9851, 9857, 9859, 9871, 9883,
                     9887, 9901, 9907, 9923, 9929, 9931, 9941, 9949, 9967, 9973]
 
-    num_aleatorio = random.randint(10**7, 10**8)
-    for elemento in nums_primos:
-        resto_divisao = num_aleatorio % elemento
-        if resto_divisao == 0:
-            print(f"O número {num_aleatorio} não é primo.")
-        else:
-            print(f"O número {num_aleatorio} é primo.")
+    for i in range(20):
+        encontrar_primo = False
+        while not encontrar_primo:
+            num_aleatorio = random.randint(10**7, 10**8)
+            for elemento in nums_primos:
+                resto_divisao = num_aleatorio % elemento
+                if resto_divisao == 0:
+                    break
+                else:
+                    print(f"O número {num_aleatorio} é primo.")
