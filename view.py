@@ -1,6 +1,6 @@
 import random
 
-def main():
+if __name__ == "__main__":
 
     nums_primos = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 
                     83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163,
@@ -95,13 +95,19 @@ def main():
                     9787, 9791, 9803, 9811, 9817, 9829, 9833, 9839, 9851, 9857, 9859, 9871, 9883,
                     9887, 9901, 9907, 9923, 9929, 9931, 9941, 9949, 9967, 9973]
 
+    contagem = 0
+
     for i in range(20):
         encontrar_primo = False
         while not encontrar_primo:
             num_aleatorio = random.randint(10**7, 10**8)
             for elemento in nums_primos:
-                resto_divisao = num_aleatorio % elemento
-                if resto_divisao == 0:
+                contagem += 1
+                if elemento > num_aleatorio**0.5:
+                    encontrar_primo = True
                     break
-                else:
-                    print(f"O número {num_aleatorio} é primo.")
+                if num_aleatorio % elemento == 0:
+                    break
+        print(str(i+1) + "º número primo - " + str(num_aleatorio))
+        print(f"A contagem é {contagem}")
+        contagem = 0
